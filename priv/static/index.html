@@ -1,0 +1,97 @@
+<html>
+    <head>
+        <title>My Calculator</title>
+
+        <style>
+            .calculator {
+                height: 500px;
+                width: 400px;
+                background: silver;
+                margin: 20px auto;
+                text-align: center;
+            }
+
+            h2 {
+                padding: 15px;
+                margin: 0;
+            }
+
+            .output {
+                background: lightgrey;
+                height: 50px;
+                width: 80%;
+                padding: 10px;
+                margin: 0 auto;
+                text-align: right;
+                font-size: 40px;
+            }
+
+            .button-area {
+                height: 60%;
+                width: 85%;
+                margin: 20px auto;
+            }
+
+            .button-area-left {
+                float: left;
+                width: 75%;
+            }
+
+            .button-area-right {
+                float: left;
+                width: 25%;
+            }
+
+            button {
+                float: left;
+                width: 33.333%;
+                height: 20%;
+            }
+
+            .zero {
+                width: 66.666%;
+            }
+
+            .equals {
+                height: 40%;
+            }
+
+            .button-area-right button {
+                 width: 100%;
+             }
+
+        </style>
+    </head>
+    <body>
+        <div class="calculator">
+           <h2>Electronic Calculator</h2>
+            <div class="output">
+                0
+            </div>
+            <div class="button-area">
+                <div class="button-area-left">
+                    <button>AC</button>
+                    <button>CE</button>
+                    <button>/</button>
+                    <button>7</button>
+                    <button>8</button>
+                    <button>9</button>
+                    <button>4</button>
+                    <button>5</button>
+                    <button>6</button>
+                    <button>1</button>
+                    <button>2</button>
+                    <button>3</button>
+                    <button class="zero">0</button>
+                    <button>.</button>
+                </div>
+                <div class="button-area-right">
+                    <button>X</button>
+                    <button>-</button>
+                    <button>+</button>
+                    <button class="equals">=</button>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
