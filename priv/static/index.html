@@ -103,5 +103,53 @@
                 </div>
             </div>
         </div>
+
+        <script>
+            /*
+            Datastructure
+                Node: { type: ('op'|'X'), val: (Str|Int), left: Node, right: Node }
+            Tree Ops:
+                Insert Node
+                Eval Tree
+             */
+            function createNode(val) {
+                var type = null;
+                var node = null;
+                if (val === '+' || val === '-' || val === 'X' || val === '/' || val === '=') {
+                    type = 'op';
+                } else {
+                    type = 'num';
+                }
+                node = { val: val, type: type, left: null, right: null };
+                return node;
+            }
+
+            function insertNode(tree, node) {
+                if ( tree === null && node.type === 'num') return node;
+                if ( tree === null && node.type === 'op') return tree;
+                if ( node === null) return tree;
+                if (tree.type === 'num' && node.type === 'op') {
+                    node.left = tree;
+                    return node;
+                }
+
+                if (tree.type === 'op' && node.type === 'num') {
+                    tree.right = node;
+                    return tree;
+                }
+
+                if (tree.type === 'op' && node.type === 'op') {
+                    if (tree.right === null) {
+                        node.left = tree.left;
+                        node.right = tree.right;
+                        return node;
+                    } else {
+                        node.left = tree;
+                        return node;
+                    }
+                }
+                throw new Error("Illegal Expression!!!!");
+            }
+        </script>
     </body>
 </html>
