@@ -150,6 +150,29 @@
                 }
                 throw new Error("Illegal Expression!!!!");
             }
+
+            var opMap = {
+                '+': function (x, y) { return x + y },
+                '-': function (x, y) { return x - y },
+                'X': function (x, y) { return x * y },
+                '/': function (x, y) { return x / y }
+            }​​​​​​​
+
+            function evalTree(node) {
+                var finalLeft;
+                var finalRight;
+
+                if (node.type === 'num') return node.val;
+                if (node.type === 'op' && node.right === null) return evalTree(node.left);
+                if (node.type === 'op' && node.left !== null && node.right !== null) {
+                    finalLeft = evalTree(node.left);
+                    finalRight = evalTree(node.right);
+                    return opMap[node.type](finalLeft, finalRight);
+                }
+
+                throw new Error('Illegal Tree !!!!');
+            }
+
         </script>
     </body>
 </html>
