@@ -1,19 +1,13 @@
 # Calculator
 
-**TODO: Add description**
+A basic polish calculator
 
-## Installation
+- To see clone & cd 
+- Run `open priv/static/index.html`
+- Looks like this:
 
-If [available in Hex](https://hex.pm/docs/publish), the package can be installed
-by adding `calculator` to your list of dependencies in `mix.exs`:
 
-```elixir
-def deps do
-  [{:calculator, "~> 0.1.0"}]
-end
-```
+![You were supposed to see the ui here :(](https://i.imgur.com/c4H4yXu.png)
 
-Documentation can be generated with [ExDoc](https://github.com/elixir-lang/ex_doc)
-and published on [HexDocs](https://hexdocs.pm). Once published, the docs can
-be found at [https://hexdocs.pm/calculator](https://hexdocs.pm/calculator).
+
 
