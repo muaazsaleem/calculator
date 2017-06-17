@@ -167,7 +167,7 @@
                 if (node.type === 'op' && node.left !== null && node.right !== null) {
                     finalLeft = evalTree(node.left);
                     finalRight = evalTree(node.right);
-                    return opMap[node.type](finalLeft, finalRight);
+                    return opMap[node.val](finalLeft, finalRight);
                 }
 
                 throw new Error('Illegal Tree !!!!');
