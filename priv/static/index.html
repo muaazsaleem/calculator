@@ -167,11 +167,80 @@
                 if (node.type === 'op' && node.left !== null && node.right !== null) {
                     finalLeft = evalTree(node.left);
                     finalRight = evalTree(node.right);
-                    return opMap[node.val](finalLeft, finalRight);
+                    return opMap[node.val](parseInt(finalLeft, 10), parseInt(finalRight, 10));
                 }
 
                 throw new Error('Illegal Tree !!!!');
             }
+
+            var tree = null;
+            var lastNode = createNode('=');
+            function addToScreen(num) {
+                var outputElem = document.getElementsByClassName("output").item(0);
+                if (outputElem.innerText === "0") {
+                    writeToScreen(num);
+                } else {
+                    outputElem.innerText = outputElem.innerText + num;
+                }
+            }
+
+            function writeToScreen(num) {
+                var outputElem = document.getElementsByClassName("output").item(0);
+                outputElem.innerText = num;
+            }
+            
+            function getScreen() {
+                return document.getElementsByClassName("output").item(0).innerText;
+            }
+            
+            function clearScreen() {
+                var outputElem = document.getElementsByClassName("output").item(0);
+                outputElem.innerText = 0;
+            }
+            function processInput(e) {
+                var button = e.srcElement.innerText;
+                var ans = 0;
+                console.log(tree);
+                if (button === "AC") {
+                    tree = null;
+                    clearScreen();
+                } else if (button === "CE") {
+                    clearScreen();
+                } else if (button === "=") {
+                    tree = insertNode(tree, createNode(getScreen()));
+                    ans = evalTree(tree);
+                    writeToScreen(ans);
+                    console.log(ans);
+                    lastNode = createNode(button);
+                    tree = null;
+                } else {
+                    var node = createNode(button);
+                    if (node.type === 'num') {
+                        if (lastNode.type === "op") {
+                            writeToScreen(button);
+                        } else {
+                            addToScreen(button);
+                        }
+                    } else {
+                        tree = insertNode(tree, createNode(getScreen()));
+                        tree = insertNode(tree, createNode(button));
+                    }
+                    lastNode = node;
+                }
+            }
+            
+            function addListeners() {
+                var i;
+                var nodeList = document.getElementsByTagName("button");
+                var nodeItem;
+
+                for (i = 0; i < nodeList.length; i++) {
+                    nodeItem = nodeList.item(i);
+                    nodeItem.addEventListener("click", processInput);
+                }
+            }
+
+            window.onload = addListeners;
 
         </script>
     </body>
